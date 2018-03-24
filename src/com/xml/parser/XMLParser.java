@@ -47,7 +47,7 @@ public class XMLParser {
             
             //the array index corresponds to where in the path the app name is
             String appName = path[appNameIndex];
-            appendToCSV("test.csv", (appName));
+            appendToCSV("permissions.csv", (appName));
             
             NodeList nList = doc.getElementsByTagName("uses-permission");
             
@@ -69,7 +69,7 @@ public class XMLParser {
                             Element eElement = (Element) nNode;
                             //result = eElement.getAttribute("android:name");
                       
-                            appendToCSV( "test.csv", ( "," + eElement.getAttribute("android:name") + "\n" ) );
+                            appendToCSV( "permissions.csv", ( "," + eElement.getAttribute("android:name") + "\n" ) );
                             
                             //s.execute("INSERT INTO Results (Permissions_2) VALUES ('" + result + "')");
                             
