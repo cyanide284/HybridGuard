@@ -26,16 +26,22 @@ parser.parseFile("/usr/local/bin/com.amoedo.calculadora_2/AndroidManifest.xml", 
 
 public class XMLParser {
 
-    public XMLParser() {}
+    //XMLParser() {}
+	public static void main(String[] args) {
+		
+		//parseFile(/*args[0]*/"/Users/Keshav/ParseXML_2/src/Apps", 2);
+		parseFile(args[0], 1);
+	}
 
     //specify XML file path in parameter filePath
     //specify where in the file path the app name is in parameter appNameIndex
-    public void parseFile(String filePath, int appNameIndex) {
+    public static void parseFile(String filePath, int appNameIndex) {
         
         try {
             
             //File fXmlFile = new File("/usr/local/bin/com.amoedo.calculadora_2/AndroidManifest.xml");
-            File fXmlFile = new File(filePath);
+            //File fXmlFile = new File(filePath);
+            File fXmlFile = new File(filePath + "/AndroidManifest.xml");
             
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -47,6 +53,7 @@ public class XMLParser {
             
             //the array index corresponds to where in the path the app name is
             String appName = path[appNameIndex];
+            //System.out.println(filePath);
             appendToCSV("permissions.csv", (appName));
             
             NodeList nList = doc.getElementsByTagName("uses-permission");
@@ -90,7 +97,7 @@ public class XMLParser {
      
     }
     
-    public void appendToCSV(String csvName, String toAppend) throws IOException {
+    public static void appendToCSV(String csvName, String toAppend) throws IOException {
         
         FileWriter fw = new FileWriter(csvName, true);
         StringBuilder sb = new StringBuilder();
