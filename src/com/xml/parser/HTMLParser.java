@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import org.jsoup.Jsoup;
-import org.jsoup.nodes.DataNode;
+//import org.jsoup.nodes.DataNode;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -27,7 +27,11 @@ parser.parseFile("/usr/local/bin/com.amoedo.calculadora_2/AndroidManifest.xml", 
 
 public class HTMLParser {
 	
-	public HTMLParser() {
+	//public HTMLParser() {}
+	
+	public static void main(String[] args) throws IOException {
+		
+		parseHTMLFile(args[0], 1);
 		
 	}
 	
@@ -35,11 +39,11 @@ public class HTMLParser {
 	Specify the app's full file path and where the app name is located
 	within that path
 	*/
-	public void parseHTMLFile(String fileName, int appNameIndex) throws IOException {
+	public static void parseHTMLFile(String fileName, int appNameIndex) throws IOException {
 		
 		try {
 		
-			File input = new File(fileName);
+			File input = new File(fileName + "/assets/www/index.html");
 			Document doc = Jsoup.parse(input, "UTF-8");
 			
 			//get all the script and iframe tags in the document
@@ -85,7 +89,7 @@ public class HTMLParser {
 	}
 	
 	//check if a script or iframe src is 3rd party or authored by developer
-	public boolean is3rdParty(String str) {
+	public static boolean is3rdParty(String str) {
 		
 		String s = str.toLowerCase();
 		
@@ -98,7 +102,7 @@ public class HTMLParser {
 		 
 	}
 	
-	public void appendToCSV(String csvName, String apName, ArrayList<String> iList, ArrayList<String> sList) throws IOException {
+	public static void appendToCSV(String csvName, String apName, ArrayList<String> iList, ArrayList<String> sList) throws IOException {
         
         FileWriter fw = new FileWriter(csvName, true);
         StringBuilder sb = new StringBuilder();
