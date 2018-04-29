@@ -27,7 +27,7 @@ parser.parseFile("/usr/local/bin/com.amoedo.calculadora_2/AndroidManifest.xml", 
 public class XMLParser {
 
     //XMLParser() {}
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		
 		//parseFile(/*args[0]*/"/Users/Keshav/ParseXML_2/src/Apps", 2);
 		parseFile(args[0], 1);
@@ -35,7 +35,7 @@ public class XMLParser {
 
     //specify XML file path in parameter filePath
     //specify where in the file path the app name is in parameter appNameIndex
-    public static void parseFile(String filePath, int appNameIndex) {
+    public static void parseFile(String filePath, int appNameIndex) throws IOException {
         
         try {
             
@@ -92,7 +92,7 @@ public class XMLParser {
             //connection.close();
 
         } catch (Exception e) {
-            e.printStackTrace();
+            appendToCSV( "permissions.csv", ( "," + "exception" + "\n" ) );
         }
      
     }
